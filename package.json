@@ -1,6 +1,6 @@
 {
   "name": "@grec0/mcp-mantis",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A TypeScript MCP stdio server for the MantisBT REST API: read, resolve, comment on issues, plus local semantic search.",
   "license": "MIT",
   "author": "@grec0",
