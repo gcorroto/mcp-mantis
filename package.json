@@ -1,0 +1,79 @@
+{
+  "name": "@grec0/mcp-mantis",
+  "version": "0.3.0",
+  "description": "A TypeScript MCP stdio server for the MantisBT REST API: read, resolve, comment on issues, plus local semantic search.",
+  "license": "MIT",
+  "author": "@grec0",
+  "homepage": "https://github.com/gcorroto/mcp-mantis",
+  "bugs": "https://github.com/gcorroto/mcp-mantis/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcorroto/mcp-mantis.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mantis",
+    "mantisbt",
+    "bugtracker",
+    "issue-tracker",
+    "rest"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-mantis": "dist/mcp.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "dev:mcp": "tsx watch src/mcp.ts",
+    "start": "node dist/index.js",
+    "start:mcp": "node dist/mcp.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run build && node --test",
+    "security": "npm audit --omit=dev",
+    "check": "npm run typecheck && npm run lint && npm run format:check",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
+    "prerelease": "npm run build && npm test",
+    "release:patch": "npm run prerelease && npm version patch -m \"chore: release v%s\" && npm publish && git push --follow-tags",
+    "release:minor": "npm run prerelease && npm version minor -m \"chore: release v%s\" && npm publish && git push --follow-tags",
+    "release:major": "npm run prerelease && npm version major -m \"chore: release v%s\" && npm publish && git push --follow-tags"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.4",
+    "dotenv": "^16.6.1",
+    "express": "5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.32",
+    "eslint": "^9.30.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  },
+  "optionalDependencies": {
+    "@huggingface/transformers": "^3.8.1"
+  }
+}

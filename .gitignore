@@ -1,0 +1,19 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+
+# Logs and caches
+*.log
+.npm/
+.eslintcache
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
