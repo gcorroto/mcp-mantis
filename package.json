@@ -48,14 +48,12 @@
     "format:check": "prettier --check .",
     "test": "npm run build && node --test",
     "security": "npm audit --omit=dev",
-    "check": "npm run typecheck && npm run lint && npm run format:check",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
     "version:patch": "npm version patch --no-git-tag-version",
     "version:minor": "npm version minor --no-git-tag-version",
     "version:major": "npm version major --no-git-tag-version",
-    "prerelease": "npm run build && npm test",
-    "release:patch": "npm run prerelease && npm version patch -m \"chore: release v%s\" && npm publish && git push --follow-tags",
-    "release:minor": "npm run prerelease && npm version minor -m \"chore: release v%s\" && npm publish && git push --follow-tags",
-    "release:major": "npm run prerelease && npm version major -m \"chore: release v%s\" && npm publish && git push --follow-tags"
+    "release:minor": "npm run version:minor && git commit -am \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push",
+    "release:major": "npm run version:major && git commit -am \"chore(release): v$(node -p \"require('./package.json').version\")\" && git push"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.4",
