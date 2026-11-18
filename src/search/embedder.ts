@@ -36,7 +36,8 @@ export class Embedder {
 
     let transformers: TransformersModule;
     try {
-      transformers = (await import('@huggingface/transformers')) as unknown as TransformersModule;
+      const moduleName = '@huggingface/transformers';
+      transformers = (await import(moduleName)) as unknown as TransformersModule;
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       throw new Error(

@@ -131,3 +131,10 @@ src/
 `.env` is git-ignored (only `.env.example` is committed) — never commit the token. Write access is
 scoped to the token owner's Mantis permissions; set `MANTIS_READONLY=true` to disable all mutations.
 Health endpoints expose no credentials or user data. Run `npm run check` before committing.
+
+## Releasing
+
+Patch releases are automatic in CI on pushes to `main`.
+For a minor release, run `npm run release:minor`.
+For a major release, run `npm run release:major`.
+Only CI publishes packages to npm.
